@@ -69,4 +69,4 @@ SELECT id from departamento where nombre = 'IT'; /*Para saber el id del departam
 SELECT * from empleado where departamento_id != 2;
 
 /*Empleado con el salario más alto*/
-select nombre,salario from empleado where salario = (select max(salario) from empleados);
+select nombre,salario from empleado where salario = (select max(salario) from empleado);
