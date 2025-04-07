@@ -35,6 +35,14 @@ id_transporteFK int not null,
 foreign key (id_transporteFK) references Transporte(id_transporte)
 );
 
+create table detallesSensor(
+ id_detSen int auto_increment primary key,
+ id_usuarioFK int not null,
+ id_sensorFK int not null,
+ foreign key (id_usuarioFK) references Usuario(id_usuario),
+ foreign key (id_sensorFK) references Sensores(id_sensor)
+);
+
 
 create table Consumo_Energetico(
 id_registro int auto_increment primary key,
@@ -59,6 +67,14 @@ descripcion varchar(50) null,
 fecha_hora datetime not null,
 ubicacion varchar(20)
 );
+
+create table seguridadDet(
+ idSeguridadDet int auto_increment primary key,
+ id_usuarioFK int not null,
+ id_seguridadFK not null,
+ foreign key (id_usuarioFK) references Usuarios(id_usuario),
+ foreign key (id_seguridadFK) references Seguridad(id_evento)
+ );
 
 #Modifique la tabla Usuario y cree un campo teléfono.
 alter table Usuarios add telefono int;
