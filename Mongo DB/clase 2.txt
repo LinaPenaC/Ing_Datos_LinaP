@@ -1,0 +1,695 @@
+use tienda
+switched to db tienda
+show collections
+db.createCollection("cliente")
+db.cliente.insertMany([
+    {
+        nombre:"Juan Pérez",
+        email:"juan.perez@email.com",
+        telefono:"313456789",
+        direccion:"Calle 13"
+    },
+    {
+        nombre:"Mariana Álvarez",
+        email:"marianaalvarez@gmail.com",
+        telefono:"3495876354",
+        direccion:"Calle 120A Sur # 70-15"
+    },
+    {
+        nombre:"Daniel Moreno",
+        email:"danielmoreno@gmail.com",
+        telefono:"3775776354",
+        direccion:"Calle 40 Sur #77A-60"
+    },
+    {
+        nombre:"Sara Figueredo",
+        email:"sopaconpollo@gmail.com",
+        telefono:"3064776354",
+        direccion:"Avenida Carrera 86 #55A – 75"
+    },
+    {
+        nombre:"Valentina Díaz",
+        email:"valerunner@gmail.com",
+        telefono:"3007665354",
+        direccion:"Calle 50 Sur # 80-22"
+    }
+])
+
+db.createCollection("venta")
+
+db.venta.insertMany([
+    {
+        idCliente:ObjectId('681169878ae5270c2e6b128e'),
+        fechaVenta: new Date(),
+        productos:[{nombre:"mouse", cantidad:2, precioUnitario:6500},
+                   {nombre:"teclado", cantidad:1, precioUnitario:95000}
+        ],
+        metodoPago:"Efectivo"
+    },
+    {
+        idCliente:ObjectId('681169878ae5270c2e6b128f'),
+        fechaVenta: new Date(),
+        productos:[
+            {nombre:"funda de computador",cantidad:4,precioUnitario:22000},
+            {nombre:"protector teclado",cantidad:2,precioUnitario:15000}
+        ],
+        metodoPago:"Tarjeta"
+    },
+    {
+        idCliente:ObjectId('681169878ae5270c2e6b1290'),
+        fechaVenta: new Date(),
+        productos:[
+            {nombre:"pantalla",cantidad:1,precioUnitario:130000}
+        ],
+        metodoPago:"Tarjeta"
+    },
+    {
+        idCliente:ObjectId('681169878ae5270c2e6b1291'),
+        fechaVenta: new Date(),
+        productos:[
+            {nombre:"mouse",cantidad:3,precioUnitario:6500}
+        ],
+        metodoPago:"Efectivo"
+    },
+    {
+        idCliente:ObjectId('681169878ae5270c2e6b1292'),
+        fechaVenta: new Date(),
+        productos:[
+            {nombre:"mouse",cantidad:2,precioUnitario:6500},
+            {nombre:"protector teclado",cantidad:2,precioUnitario:15000},
+            {nombre:"funda de computador",cantidad:2,precioUnitario:22000}
+        ],
+        metodoPago:"Efectivo"
+    },
+])
+
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6812695766c31bde047c8bb4'),
+    '1': ObjectId('6812695766c31bde047c8bb5'),
+    '2': ObjectId('6812695766c31bde047c8bb6'),
+    '3': ObjectId('6812695766c31bde047c8bb7'),
+    '4': ObjectId('6812695766c31bde047c8bb8')
+  }
+}
+show collections
+cliente
+venta
+db.createCollection(“productos”)
+db.productos.insertMany([
+    {nombre:"Mouse",precio:60000,cantidad:45},
+    {nombre:"Teclados",precio:100000,cantidad:15},
+    {nombre:"USB",precio:130000,cantidad:19},
+    {nombre:"Laptop",precio:120000,cantidad:59}
+])
+SyntaxError: Unexpected character '“'. (1:20)
+
+[0m[31m[1m>[22m[39m[90m 1 |[39m db[33m.[39mcreateCollection(“productos”)
+ [90m   |[39m                     [31m[1m^[22m[39m
+ [90m 2 |[39m db[33m.[39mproductos[33m.[39minsertMany([
+ [90m 3 |[39m     {nombre[33m:[39m[32m"Mouse"[39m[33m,[39mprecio[33m:[39m[35m60000[39m[33m,[39mcantidad[33m:[39m[35m45[39m}[33m,[39m
+ [90m 4 |[39m     {nombre[33m:[39m[32m"Teclados"[39m[33m,[39mprecio[33m:[39m[35m100000[39m[33m,[39mcantidad[33m:[39m[35m15[39m}[33m,[39m[0m
+db.createCollection(“productos”)
+SyntaxError: Unexpected character '“'. (1:20)
+
+[0m[31m[1m>[22m[39m[90m 1 |[39m db[33m.[39mcreateCollection(“productos”)
+ [90m   |[39m                     [31m[1m^[22m[39m
+ [90m 2 |[39m[0m
+db.createCollection(“productos”)
+
+SyntaxError: Unexpected character '“'. (1:20)
+
+[0m[31m[1m>[22m[39m[90m 1 |[39m db[33m.[39mcreateCollection(“productos”)
+ [90m   |[39m                     [31m[1m^[22m[39m
+ [90m 2 |[39m
+ [90m 3 |[39m[0m
+db.createCollection("productos")
+{ ok: 1 }
+db.productos.insertMany([
+    {nombre:"Mouse",precio:60000,cantidad:45},
+    {nombre:"Teclados",precio:100000,cantidad:15},
+    {nombre:"USB",precio:130000,cantidad:19},
+    {nombre:"Laptop",precio:120000,cantidad:59}
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('68126a6766c31bde047c8bb9'),
+    '1': ObjectId('68126a6766c31bde047c8bba'),
+    '2': ObjectId('68126a6766c31bde047c8bbb'),
+    '3': ObjectId('68126a6766c31bde047c8bbc')
+  }
+}
+show collections
+cliente
+productos
+venta
+db.cliente.find({direccion:{$eq :"Calle 13"}})
+{
+  _id: ObjectId('6812695766c31bde047c8baf'),
+  nombre: 'Juan Pérez',
+  email: 'juan.perez@email.com',
+  telefono: '313456789',
+  direccion: 'Calle 13'
+}
+db.venta.find({"productos.precioUnitario":{$gt:10000}})
+{
+  _id: ObjectId('6812695766c31bde047c8bb4'),
+  idCliente: ObjectId('681169878ae5270c2e6b128e'),
+  fechaVenta: 2025-04-30T18:17:59.246Z,
+  productos: [
+    {
+      nombre: 'mouse',
+      cantidad: 2,
+      precioUnitario: 6500
+    },
+    {
+      nombre: 'teclado',
+      cantidad: 1,
+      precioUnitario: 95000
+    }
+  ],
+  metodoPago: 'Efectivo'
+}
+{
+  _id: ObjectId('6812695766c31bde047c8bb5'),
+  idCliente: ObjectId('681169878ae5270c2e6b128f'),
+  fechaVenta: 2025-04-30T18:17:59.246Z,
+  productos: [
+    {
+      nombre: 'funda de computador',
+      cantidad: 4,
+      precioUnitario: 22000
+    },
+    {
+      nombre: 'protector teclado',
+      cantidad: 2,
+      precioUnitario: 15000
+    }
+  ],
+  metodoPago: 'Tarjeta'
+}
+{
+  _id: ObjectId('6812695766c31bde047c8bb6'),
+  idCliente: ObjectId('681169878ae5270c2e6b1290'),
+  fechaVenta: 2025-04-30T18:17:59.246Z,
+  productos: [
+    {
+      nombre: 'pantalla',
+      cantidad: 1,
+      precioUnitario: 130000
+    }
+  ],
+  metodoPago: 'Tarjeta'
+}
+{
+  _id: ObjectId('6812695766c31bde047c8bb8'),
+  idCliente: ObjectId('681169878ae5270c2e6b1292'),
+  fechaVenta: 2025-04-30T18:17:59.246Z,
+  productos: [
+    {
+      nombre: 'mouse',
+      cantidad: 2,
+      precioUnitario: 6500
+    },
+    {
+      nombre: 'protector teclado',
+      cantidad: 2,
+      precioUnitario: 15000
+    },
+    {
+      nombre: 'funda de computador',
+      cantidad: 2,
+      precioUnitario: 22000
+    }
+  ],
+  metodoPago: 'Efectivo'
+}
+db.cliente.find()
+{
+  _id: ObjectId('6812695766c31bde047c8baf'),
+  nombre: 'Juan Pérez',
+  email: 'juan.perez@email.com',
+  telefono: '313456789',
+  direccion: 'Calle 13'
+}
+{
+  _id: ObjectId('6812695766c31bde047c8bb0'),
+  nombre: 'Mariana Álvarez',
+  email: 'marianaalvarez@gmail.com',
+  telefono: '3495876354',
+  direccion: 'Calle 120A Sur # 70-15'
+}
+{
+  _id: ObjectId('6812695766c31bde047c8bb1'),
+  nombre: 'Daniel Moreno',
+  email: 'danielmoreno@gmail.com',
+  telefono: '3775776354',
+  direccion: 'Calle 40 Sur #77A-60'
+}
+{
+  _id: ObjectId('6812695766c31bde047c8bb2'),
+  nombre: 'Sara Figueredo',
+  email: 'sopaconpollo@gmail.com',
+  telefono: '3064776354',
+  direccion: 'Avenida Carrera 86 #55A – 75'
+}
+{
+  _id: ObjectId('6812695766c31bde047c8bb3'),
+  nombre: 'Valentina Díaz',
+  email: 'valerunner@gmail.com',
+  telefono: '3007665354',
+  direccion: 'Calle 50 Sur # 80-22'
+}
+db.cliente.find()
+{
+  _id: ObjectId('6812695766c31bde047c8baf'),
+  nombre: 'Juan Pérez',
+  email: 'juan.perez@email.com',
+  telefono: '313456789',
+  direccion: 'Calle 13'
+}
+{
+  _id: ObjectId('6812695766c31bde047c8bb0'),
+  nombre: 'Mariana Álvarez',
+  email: 'marianaalvarez@gmail.com',
+  telefono: '3495876354',
+  direccion: 'Calle 120A Sur # 70-15'
+}
+{
+  _id: ObjectId('6812695766c31bde047c8bb1'),
+  nombre: 'Daniel Moreno',
+  email: 'danielmoreno@gmail.com',
+  telefono: '3775776354',
+  direccion: 'Calle 40 Sur #77A-60'
+}
+{
+  _id: ObjectId('6812695766c31bde047c8bb2'),
+  nombre: 'Sara Figueredo',
+  email: 'sopaconpollo@gmail.com',
+  telefono: '3064776354',
+  direccion: 'Avenida Carrera 86 #55A – 75'
+}
+{
+  _id: ObjectId('6812695766c31bde047c8bb3'),
+  nombre: 'Valentina Díaz',
+  email: 'valerunner@gmail.com',
+  telefono: '3007665354',
+  direccion: 'Calle 50 Sur # 80-22'
+}
+db.venta.find()
+{
+  _id: ObjectId('6812695766c31bde047c8bb4'),
+  idCliente: ObjectId('681169878ae5270c2e6b128e'),
+  fechaVenta: 2025-04-30T18:17:59.246Z,
+  productos: [
+    {
+      nombre: 'mouse',
+      cantidad: 2,
+      precioUnitario: 6500
+    },
+    {
+      nombre: 'teclado',
+      cantidad: 1,
+      precioUnitario: 95000
+    }
+  ],
+  metodoPago: 'Efectivo'
+}
+{
+  _id: ObjectId('6812695766c31bde047c8bb5'),
+  idCliente: ObjectId('681169878ae5270c2e6b128f'),
+  fechaVenta: 2025-04-30T18:17:59.246Z,
+  productos: [
+    {
+      nombre: 'funda de computador',
+      cantidad: 4,
+      precioUnitario: 22000
+    },
+    {
+      nombre: 'protector teclado',
+      cantidad: 2,
+      precioUnitario: 15000
+    }
+  ],
+  metodoPago: 'Tarjeta'
+}
+{
+  _id: ObjectId('6812695766c31bde047c8bb6'),
+  idCliente: ObjectId('681169878ae5270c2e6b1290'),
+  fechaVenta: 2025-04-30T18:17:59.246Z,
+  productos: [
+    {
+      nombre: 'pantalla',
+      cantidad: 1,
+      precioUnitario: 130000
+    }
+  ],
+  metodoPago: 'Tarjeta'
+}
+{
+  _id: ObjectId('6812695766c31bde047c8bb7'),
+  idCliente: ObjectId('681169878ae5270c2e6b1291'),
+  fechaVenta: 2025-04-30T18:17:59.246Z,
+  productos: [
+    {
+      nombre: 'mouse',
+      cantidad: 3,
+      precioUnitario: 6500
+    }
+  ],
+  metodoPago: 'Efectivo'
+}
+{
+  _id: ObjectId('6812695766c31bde047c8bb8'),
+  idCliente: ObjectId('681169878ae5270c2e6b1292'),
+  fechaVenta: 2025-04-30T18:17:59.246Z,
+  productos: [
+    {
+      nombre: 'mouse',
+      cantidad: 2,
+      precioUnitario: 6500
+    },
+    {
+      nombre: 'protector teclado',
+      cantidad: 2,
+      precioUnitario: 15000
+    },
+    {
+      nombre: 'funda de computador',
+      cantidad: 2,
+      precioUnitario: 22000
+    }
+  ],
+  metodoPago: 'Efectivo'
+}
+db.productos.find()
+{
+  _id: ObjectId('68126a6766c31bde047c8bb9'),
+  nombre: 'Mouse',
+  precio: 60000,
+  cantidad: 45
+}
+{
+  _id: ObjectId('68126a6766c31bde047c8bba'),
+  nombre: 'Teclados',
+  precio: 100000,
+  cantidad: 15
+}
+{
+  _id: ObjectId('68126a6766c31bde047c8bbb'),
+  nombre: 'USB',
+  precio: 130000,
+  cantidad: 19
+}
+{
+  _id: ObjectId('68126a6766c31bde047c8bbc'),
+  nombre: 'Laptop',
+  precio: 120000,
+  cantidad: 59
+}
+db.productos.updateOne([{nombre:"Laptop"},{$set:{precio:5000000}}])
+MongoInvalidArgumentError: Update document requires atomic operators
+db.productos.updateOne([{nombre:"Laptop"},{$set:{precio:5000000}}])
+MongoInvalidArgumentError: Update document requires atomic operators
+db.productos.updateOne({nombre:"Laptop"},{$set:{precio:5000000}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.productos.find({nombre:"Laptop"})
+{
+  _id: ObjectId('68126a6766c31bde047c8bbc'),
+  nombre: 'Laptop',
+  precio: 5000000,
+  cantidad: 59
+}
+db.productos.updateMany({})
+MongoInvalidArgumentError: Update document requires atomic operators
+db.productos.updateMany({precio:{$lt:100000}},{$set:{enOferta:true}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.productos.find()
+{
+  _id: ObjectId('68126a6766c31bde047c8bb9'),
+  nombre: 'Mouse',
+  precio: 60000,
+  cantidad: 45,
+  enOferta: true
+}
+{
+  _id: ObjectId('68126a6766c31bde047c8bba'),
+  nombre: 'Teclados',
+  precio: 100000,
+  cantidad: 15
+}
+{
+  _id: ObjectId('68126a6766c31bde047c8bbb'),
+  nombre: 'USB',
+  precio: 130000,
+  cantidad: 19
+}
+{
+  _id: ObjectId('68126a6766c31bde047c8bbc'),
+  nombre: 'Laptop',
+  precio: 5000000,
+  cantidad: 59
+}
+db.productos.deleteOne({$and:[{nombre:"Laptop"},{cantidad:19}]})
+{
+  acknowledged: true,
+  deletedCount: 0
+}
+db.productos.find()
+{
+  _id: ObjectId('68126a6766c31bde047c8bb9'),
+  nombre: 'Mouse',
+  precio: 60000,
+  cantidad: 45,
+  enOferta: true
+}
+{
+  _id: ObjectId('68126a6766c31bde047c8bba'),
+  nombre: 'Teclados',
+  precio: 100000,
+  cantidad: 15
+}
+{
+  _id: ObjectId('68126a6766c31bde047c8bbb'),
+  nombre: 'USB',
+  precio: 130000,
+  cantidad: 19
+}
+{
+  _id: ObjectId('68126a6766c31bde047c8bbc'),
+  nombre: 'Laptop',
+  precio: 5000000,
+  cantidad: 59
+}
+db.productos.deleteOne({$and:[{nombre:"Laptop"},{cantidad:59}]})
+{
+  acknowledged: true,
+  deletedCount: 1
+}
+db.productos.find()
+{
+  _id: ObjectId('68126a6766c31bde047c8bb9'),
+  nombre: 'Mouse',
+  precio: 60000,
+  cantidad: 45,
+  enOferta: true
+}
+{
+  _id: ObjectId('68126a6766c31bde047c8bba'),
+  nombre: 'Teclados',
+  precio: 100000,
+  cantidad: 15
+}
+{
+  _id: ObjectId('68126a6766c31bde047c8bbb'),
+  nombre: 'USB',
+  precio: 130000,
+  cantidad: 19
+}
+db.productos.drop()
+true
+show collections
+cliente
+venta
+db.dropDatabase()
+{ ok: 1, dropped: 'tienda' }
+use tienda
+already on db tienda
+show collections
+db.createCollection("cliente")
+db.cliente.insertMany([
+    {
+        nombre:"Juan Pérez",
+        email:"juan.perez@email.com",
+        telefono:"313456789",
+        direccion:"Calle 13"
+    },
+    {
+        nombre:"Mariana Álvarez",
+        email:"marianaalvarez@gmail.com",
+        telefono:"3495876354",
+        direccion:"Calle 120A Sur # 70-15"
+    },
+    {
+        nombre:"Daniel Moreno",
+        email:"danielmoreno@gmail.com",
+        telefono:"3775776354",
+        direccion:"Calle 40 Sur #77A-60"
+    },
+    {
+        nombre:"Sara Figueredo",
+        email:"sopaconpollo@gmail.com",
+        telefono:"3064776354",
+        direccion:"Avenida Carrera 86 #55A – 75"
+    },
+    {
+        nombre:"Valentina Díaz",
+        email:"valerunner@gmail.com",
+        telefono:"3007665354",
+        direccion:"Calle 50 Sur # 80-22"
+    }
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6812782c66c31bde047c8bbd'),
+    '1': ObjectId('6812782c66c31bde047c8bbe'),
+    '2': ObjectId('6812782c66c31bde047c8bbf'),
+    '3': ObjectId('6812782c66c31bde047c8bc0'),
+    '4': ObjectId('6812782c66c31bde047c8bc1')
+  }
+}
+db.createCollection("cliente")
+db.cliente.insertMany([
+    {
+        nombre:"Juan Pérez",
+        email:"juan.perez@email.com",
+        telefono:"313456789",
+        direccion:"Calle 13"
+    },
+    {
+        nombre:"Mariana Álvarez",
+        email:"marianaalvarez@gmail.com",
+        telefono:"3495876354",
+        direccion:"Calle 120A Sur # 70-15"
+    },
+    {
+        nombre:"Daniel Moreno",
+        email:"danielmoreno@gmail.com",
+        telefono:"3775776354",
+        direccion:"Calle 40 Sur #77A-60"
+    },
+    {
+        nombre:"Sara Figueredo",
+        email:"sopaconpollo@gmail.com",
+        telefono:"3064776354",
+        direccion:"Avenida Carrera 86 #55A – 75"
+    },
+    {
+        nombre:"Valentina Díaz",
+        email:"valerunner@gmail.com",
+        telefono:"3007665354",
+        direccion:"Calle 50 Sur # 80-22"
+    }
+])
+
+db.createCollection("venta")
+
+db.venta.insertMany([
+    {
+        idCliente:ObjectId('681169878ae5270c2e6b128e'),
+        fechaVenta: new Date(),
+        productos:[{nombre:"mouse", cantidad:2, precioUnitario:6500},
+                   {nombre:"teclado", cantidad:1, precioUnitario:95000}
+        ],
+        metodoPago:"Efectivo"
+    },
+    {
+        idCliente:ObjectId('681169878ae5270c2e6b128f'),
+        fechaVenta: new Date(),
+        productos:[
+            {nombre:"funda de computador",cantidad:4,precioUnitario:22000},
+            {nombre:"protector teclado",cantidad:2,precioUnitario:15000}
+        ],
+        metodoPago:"Tarjeta"
+    },
+    {
+        idCliente:ObjectId('681169878ae5270c2e6b1290'),
+        fechaVenta: new Date(),
+        productos:[
+            {nombre:"pantalla",cantidad:1,precioUnitario:130000}
+        ],
+        metodoPago:"Tarjeta"
+    },
+    {
+        idCliente:ObjectId('681169878ae5270c2e6b1291'),
+        fechaVenta: new Date(),
+        productos:[
+            {nombre:"mouse",cantidad:3,precioUnitario:6500}
+        ],
+        metodoPago:"Efectivo"
+    },
+    {
+        idCliente:ObjectId('681169878ae5270c2e6b1292'),
+        fechaVenta: new Date(),
+        productos:[
+            {nombre:"mouse",cantidad:2,precioUnitario:6500},
+            {nombre:"protector teclado",cantidad:2,precioUnitario:15000},
+            {nombre:"funda de computador",cantidad:2,precioUnitario:22000}
+        ],
+        metodoPago:"Efectivo"
+    },
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6812783066c31bde047c8bc7'),
+    '1': ObjectId('6812783066c31bde047c8bc8'),
+    '2': ObjectId('6812783066c31bde047c8bc9'),
+    '3': ObjectId('6812783066c31bde047c8bca'),
+    '4': ObjectId('6812783066c31bde047c8bcb')
+  }
+}
+db.productos.insertMany([
+    {nombre:"Mouse",precio:60000,cantidad:45},
+    {nombre:"Teclados",precio:100000,cantidad:15},
+    {nombre:"USB",precio:130000,cantidad:19},
+    {nombre:"Laptop",precio:120000,cantidad:59}
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6812788e66c31bde047c8bcc'),
+    '1': ObjectId('6812788e66c31bde047c8bcd'),
+    '2': ObjectId('6812788e66c31bde047c8bce'),
+    '3': ObjectId('6812788e66c31bde047c8bcf')
+  }
+}
+show collections
+cliente
+productos
+venta
+ 
+ 
+ 
+db.ventas.aggregate([{$lookup:{from:"productos",localField:"ProductoId",foreField:"_id", as:"producto"},{}}])
+SyntaxError: Unexpected token (1:104)
+
+[0m[31m[1m>[22m[39m[90m 1 |[39m db[33m.[39mventas[33m.[39maggregate([{$lookup[33m:[39m{[36mfrom[39m[33m:[39m[32m"productos"[39m[33m,[39mlocalField[33m:[39m[32m"ProductoId"[39m[33m,[39mforeField[33m:[39m[32m"_id"[39m[33m,[39m [36mas[39m[33m:[39m[32m"producto"[39m}[33m,[39m{}}])
+ [90m   |[39m                                                                                                         [31m[1m^[22m[39m[0m
+tienda
+
