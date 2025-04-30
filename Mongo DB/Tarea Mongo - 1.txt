@@ -1,0 +1,101 @@
+use tienda
+db.createCollection("cliente")
+db.cliente.insertMany([
+    {
+        nombre:"Juan Pérez",
+        email:"juan.perez@email.com",
+        telefono:"313456789",
+        direccion:"Calle 13"
+    },
+    {
+        nombre:"Mariana Álvarez",
+        email:"marianaalvarez@gmail.com",
+        telefono:"3495876354",
+        direccion:"Calle 120A Sur # 70-15"
+    },
+    {
+        nombre:"Daniel Moreno",
+        email:"danielmoreno@gmail.com",
+        telefono:"3775776354",
+        direccion:"Calle 40 Sur #77A-60"
+    },
+    {
+        nombre:"Sara Figueredo",
+        email:"sopaconpollo@gmail.com",
+        telefono:"3064776354",
+        direccion:"Avenida Carrera 86 #55A – 75"
+    },
+    {
+        nombre:"Valentina Díaz",
+        email:"valerunner@gmail.com",
+        telefono:"3007665354",
+        direccion:"Calle 50 Sur # 80-22"
+    }
+])
+
+db.createCollection("venta")
+
+db.venta.insertMany([
+    {
+        idCliente:ObjectId('681169878ae5270c2e6b128e'),
+        fechaVenta: new Date(),
+        productos:[{nombre:"mouse", cantidad:2, precioUnitario:6500},
+                   {nombre:"teclado", cantidad:1, precioUnitario:95000}
+        ],
+        metodoPago:"Efectivo"
+    },
+    {
+        idCliente:ObjectId('681169878ae5270c2e6b128f'),
+        fechaVenta: new Date(),
+        productos:[
+            {nombre:"funda de computador",cantidad:4,precioUnitario:22000},
+            {nombre:"protector teclado",cantidad:2,precioUnitario:15000}
+        ],
+        metodoPago:"Tarjeta"
+    },
+    {
+        idCliente:ObjectId('681169878ae5270c2e6b1290'),
+        fechaVenta: new Date(),
+        productos:[
+            {nombre:"pantalla",cantidad:1,precioUnitario:130000}
+        ],
+        metodoPago:"Tarjeta"
+    },
+    {
+        idCliente:ObjectId('681169878ae5270c2e6b1291'),
+        fechaVenta: new Date(),
+        productos:[
+            {nombre:"mouse",cantidad:3,precioUnitario:6500}
+        ],
+        metodoPago:"Efectivo"
+    },
+    {
+        idCliente:ObjectId('681169878ae5270c2e6b1292'),
+        fechaVenta: new Date(),
+        productos:[
+            {nombre:"mouse",cantidad:2,precioUnitario:6500},
+            {nombre:"protector teclado",cantidad:2,precioUnitario:15000},
+            {nombre:"funda de computador",cantidad:2,precioUnitario:22000}
+        ],
+        metodoPago:"Efectivo"
+    },
+])
+
+
+db.cliente.find({direccion:{$eq :"Calle 13"}})
+db.venta.find({"productos.precioUnitario":{$gt:10000}})
+db.venta.find({"productos.cantidad":{$gte:3}})
+db.venta.find({"productos.precioUnitario":{$lt:22000}})
+db.cliente.find({nombre:{$ne: "Juan Pérez"}})
+db.cliente.find({telefono:{$in: [3775776354,3064776354]}})
+db.venta.find({"productos.nombre":{$nin: ["mouse","teclado"]}})
+db.cliente.find({$or:[{nombre:"Valentina Díaz"},{email:"sopaconpollo@gmail.com"}]})
+db.venta.find({$and:[{"productos.precioUnitario":{$lte:22000}},{metodoPago:"Efectivo"}]})
+db.venta.find({"productos.precioUnitario":{$not:{$lte:6500}}})
+db.cliente.find({$nor:[{direccion:"Calle 50 Sur # 80-22"},{telefono:3775776354}]})
+db.cliente.find({direccion:{$exists:true}})
+db.venta.find({productos:{$type:"array"}})
+db.venta.find({"productos.cantidad":{$mod:[3,0]}})
+db.cliente.find({direccion:{$regex: /carrera/i}})
+db.venta.find({productos:{$elemMatch:{cantidad:{$gte: 2},precioUnitario:{$gte:6500}}}})
+
