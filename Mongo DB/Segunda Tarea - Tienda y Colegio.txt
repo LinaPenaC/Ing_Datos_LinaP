@@ -1,0 +1,200 @@
+Segunda Tarea - Tienda y Colegio
+
+use tienda
+db.createCollection("cliente")
+
+db.cliente.insertMany([
+    {
+        nombre:"Juan Pérez",
+        email:"juan.perez@email.com",
+        telefono:"313456789",
+        direccion:"Calle 13"
+    },
+    {
+        nombre:"Mariana Álvarez",
+        email:"marianaalvarez@gmail.com",
+        telefono:"3495876354",
+        direccion:"Calle 120A Sur # 70-15"
+    },
+    {
+        nombre:"Daniel Moreno",
+        email:"danielmoreno@gmail.com",
+        telefono:"3775776354",
+        direccion:"Calle 40 Sur #77A-60"
+    },
+    {
+        nombre:"Sara Figueredo",
+        email:"sopaconpollo@gmail.com",
+        telefono:"3064776354",
+        direccion:"Avenida Carrera 86 #55A – 75"
+    },
+    {
+        nombre:"Valentina Díaz",
+        email:"valerunner@gmail.com",
+        telefono:"3007665354",
+        direccion:"Calle 50 Sur # 80-22"
+    }
+])
+
+db.createCollection("productos")
+
+db.productos.insertMany([
+    {nombre:"Mouse",precio:60000,cantidad:45},
+    {nombre:"Teclados",precio:100000,cantidad:15},
+    {nombre:"USB",precio:130000,cantidad:19},
+    {nombre:"Laptop",precio:120000,cantidad:59},
+    {nombre:"funda de computador",precio:22000,cantidad:4},            
+    {nombre:"protector teclado",precio:15000,cantidad:2}
+])
+db.createCollection("venta")
+db.venta.insertMany([
+    {
+        cliente_id: ObjectId('68144026fdc7dbcd866b128e'), // Referencia a la colección de clientes
+        productos: [
+            { producto_id: ObjectId('68144026fdc7dbcd866b1293'), cantidad: 2, precio: 60000 }, // Producto y cantidad
+            { producto_id: ObjectId('68144026fdc7dbcd866b1296'), cantidad: 1, precio: 120000 }
+        ],
+        fecha: new Date(),
+        total: null// Total de la venta
+    },
+    {
+        cliente_id: ObjectId('68144026fdc7dbcd866b128f'),
+        productos: [
+            { producto_id: ObjectId('68144026fdc7dbcd866b1295'), cantidad: 1, precio: 130000 }
+        ],
+        fecha: new Date(),
+        total: 130000
+    },
+    {
+        cliente_id: ObjectId('68144026fdc7dbcd866b1290'),
+        productos: [
+            { producto_id: ObjectId('68144026fdc7dbcd866b1294'), cantidad: 1, precio: 100000 },
+            { producto_id: ObjectId('68144026fdc7dbcd866b1297'), cantidad: 1, precio: 22000 }
+        ],
+        fecha: new Date(),
+        total: 122000
+    }
+])
+
+
+
+-------------------------------------------------------------------------------------------------------
+
+use Colegio
+db.createCollection("alumno")
+
+db.alumno.insertMany([
+    {
+        nombre:"Luisa Obregón",
+        direccion:"Calle 12 #45-67",
+        telefono: 313456789,
+        correo:"Luisa.obregon@gmail.com"
+    },
+    {
+        nombre:"Carlos Ramírez",
+        direccion:"Calle 14 #45-67",
+        telefono: 3101234567,
+        correo:"carlos.ramirez@email.com"
+    },
+    {
+        nombre:"Lucía Gómez",
+        direccion:"Carrera 24 #89-10",
+        telefono: 3192345678,
+        correo:"lucia.gomez@email.com"
+    },
+    {
+        nombre:"José Martínez",
+        direccion:"Avenida 8 #20-15",
+        telefono: 3143456789,
+        correo:"jose.martinez@email.com"
+    },
+    {
+        nombre:"Ana Pérez",
+        direccion:"Calle 10 #55-23",
+        telefono: 3109876543,
+        correo:"ana.perez@email.com"
+    }
+]);
+
+db.createCollection("materia")
+
+db.materia.insertMany([
+    {
+        nombre:"Matemáticas",
+        descripcion:"Cálculo, álgebra y geometría"
+    },
+    {
+        nombre:"Español",
+        descripcion:"Lectura, escritura y comprensión de textos."
+    },
+    {
+        nombre:"Historia",
+        descripcion:"Estudio de la historia mundial y nacional"
+    },
+    {
+        nombre:"Ciencias Naturales",
+        descripcion:"Biología, química, física"
+    },
+    {
+        nombre:"Inglés",
+        descripcion:"Estudio del idioma inglés"
+    },
+]);
+
+db.createCollection("curso")
+db.curso.insertMany([
+    {
+        idCurso:"10A",
+        alumnos:[ObjectId('6814476a0e3d01dbf86b129c'),ObjectId('6814476a0e3d01dbf86b129d')]
+    },
+    {
+        idCurso:"10B",
+        alumnos:[ObjectId('6814476a0e3d01dbf86b129e')]
+    },
+    {
+        idCurso:"10C",
+        alumnos:[]
+    },
+    {
+        idCurso:"11A",
+        alumnos:[ObjectId('6814476a0e3d01dbf86b129f')]
+    },
+    {
+        idCurso:"11B",
+        alumnos:[ObjectId('6814476a0e3d01dbf86b12a0')]
+    }
+]);
+
+db.createCollection("calificacion")
+db.calificacion.insertMany([
+    {
+        alumno: ObjectId('681448969b8fd7bcbb6b129c'),  // Luisa Obregón
+        materia: ObjectId('681448969b8fd7bcbb6b129f'), // Matemáticas
+        curso: ObjectId('681448979b8fd7bcbb6b12a6'),
+        calificacion: "Sobresaliente"
+    },
+    {
+        alumno: ObjectId('681448969b8fd7bcbb6b129d'),  // Carlos Ramírez
+        materia: ObjectId('681448969b8fd7bcbb6b129f'), // Matemáticas
+        curso: ObjectId('681448979b8fd7bcbb6b12a6'),
+        calificacion: "Alta"
+    },
+    {
+        alumno: ObjectId('681448969b8fd7bcbb6b12a1'),  // Lucía Gómez
+        materia: ObjectId('681448969b8fd7bcbb6b12a3'), // Historia
+        curso: ObjectId('681448979b8fd7bcbb6b12a7'),
+        calificacion: "Aprobado"
+    },
+    {
+        alumno: ObjectId('681448969b8fd7bcbb6b12a2'),  // José Martínez
+        materia: ObjectId('681448969b8fd7bcbb6b12a3'), // Historia
+        curso: ObjectId('681448979b8fd7bcbb6b12a9'),
+        calificacion: "Insuficiente"
+    },
+    {
+        alumno: ObjectId('681448969b8fd7bcbb6b12a4'),  // Ana Pérez
+        materia: ObjectId('681448969b8fd7bcbb6b12a2'), // Español
+        curso: ObjectId('681448979b8fd7bcbb6b12aa'),
+        calificacion: "Reprobado"
+    }
+]);
