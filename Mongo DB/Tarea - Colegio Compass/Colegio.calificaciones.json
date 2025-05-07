@@ -1,0 +1,75 @@
+[{
+  "_id": {
+    "$oid": "681ae2171384ff943d985c64"
+  },
+  "alumno": {
+    "$oid": "681ad5971384ff943d985c16"
+  },
+  "materia": {
+    "$oid": "681ad8941384ff943d985c1e"
+  },
+  "curso": {
+    "$oid": "681adf111384ff943d985c4c"
+  },
+  "calificacion": "Sobresaliente"
+},
+{
+  "_id": {
+    "$oid": "681ae9f41384ff943d985c72"
+  },
+  "alumno": {
+    "$oid": "681ad6dd1384ff943d985c19"
+  },
+  "materia": {
+    "$oid": "681ad8941384ff943d985c1e"
+  },
+  "curso": {
+    "$oid": "681ae0361384ff943d985c55"
+  },
+  "calificacion": "Notable"
+},
+{
+  "_id": {
+    "$oid": "681aea531384ff943d985c73"
+  },
+  "alumno": {
+    "$oid": "681ad7bf1384ff943d985c1b"
+  },
+  "materia": {
+    "$oid": "681ad9221384ff943d985c22"
+  },
+  "curso": {
+    "$oid": "681ae0361384ff943d985c55"
+  },
+  "calificacion": "Suficiente"
+},
+{
+  "_id": {
+    "$oid": "681aeaa21384ff943d985c74"
+  },
+  "alumno": {
+    "$oid": "681ad8421384ff943d985c1c"
+  },
+  "materia": {
+    "$oid": "681ad9221384ff943d985c22"
+  },
+  "curso": {
+    "$oid": "681ae0c01384ff943d985c58"
+  },
+  "calificacion": "Insuficiente"
+},
+{
+  "_id": {
+    "$oid": "681aeafd1384ff943d985c76"
+  },
+  "alumno": {
+    "$oid": "681ad6871384ff943d985c18"
+  },
+  "materia": {
+    "$oid": "681ad9061384ff943d985c20"
+  },
+  "curso": {
+    "$oid": "681adf111384ff943d985c4c"
+  },
+  "calificacion": "Notable"
+}]

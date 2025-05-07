@@ -1,0 +1,90 @@
+[{
+  "_id": {
+    "$oid": "681ad5971384ff943d985c16"
+  },
+  "nombre": "Luisa Obregón",
+  "direccion": "Calle 12 #45-67",
+  "telefono": 313456789,
+  "correo": "Luisa.obregon@gmail.com"
+},
+{
+  "_id": {
+    "$oid": "681ad6871384ff943d985c18"
+  },
+  "nombre": "Ana Pérez",
+  "direccion": "Calle 10 #55-23",
+  "telefono": 310987654,
+  "correo": "ana.perez@email.com"
+},
+{
+  "_id": {
+    "$oid": "681ad6dd1384ff943d985c19"
+  },
+  "nombre": "Carlos Ramires",
+  "direccion": "Calle 14 #45-67",
+  "telefono": 310123456,
+  "correo": "carlos.ramirez@email.com"
+},
+{
+  "_id": {
+    "$oid": "681ad7bf1384ff943d985c1b"
+  },
+  "nombre": "Lucía Gómez",
+  "direccion": "Carrera 24 #89-10",
+  "telefono": 319234568,
+  "correo": "lucia.gomez@email.com"
+},
+{
+  "_id": {
+    "$oid": "681ad8421384ff943d985c1c"
+  },
+  "nombre": "José Martínez",
+  "direccion": "Avenida 8 #20-15",
+  "telefono": 314345673,
+  "correo": "jose.martinez@email.com"
+},
+{
+  "_id": {
+    "$oid": "681ad99c1384ff943d985c28"
+  },
+  "nombre": "Mariana Álvarez ",
+  "direccion": "Calle 120A Sur # 70-15",
+  "telefono": 349576354,
+  "correo": "marianaalvarez@gmail.com"
+},
+{
+  "_id": {
+    "$oid": "681ad9f91384ff943d985c2a"
+  },
+  "nombre": "Daniel Moreno",
+  "direccion": "Calle 40 Sur #77A-60",
+  "telefono": 377577634,
+  "correo": "danielmoreno@gmail.com"
+},
+{
+  "_id": {
+    "$oid": "681ada2b1384ff943d985c2b"
+  },
+  "nombre": "Sara Figueredo",
+  "direccion": "Avenida Carrera 86 #55A – 75",
+  "telefono": 306496354,
+  "correo": "sopaconpollo@gmail.com"
+},
+{
+  "_id": {
+    "$oid": "681ada6e1384ff943d985c2c"
+  },
+  "nombre": "Valentina Díaz",
+  "direccion": "Calle 50 Sur # 80-22",
+  "telefono": 37665354,
+  "correo": "valerunner@gmail.com"
+},
+{
+  "_id": {
+    "$oid": "681ae1481384ff943d985c5f"
+  },
+  "nombre": "Patricia Fernandez",
+  "direccion": "Calle 70 Norte # 50-34",
+  "telefono": 37665354,
+  "correo": "patricia.fer@gmail.com"
+}]

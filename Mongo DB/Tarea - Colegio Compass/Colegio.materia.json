@@ -1,0 +1,35 @@
+[{
+  "_id": {
+    "$oid": "681ad8941384ff943d985c1e"
+  },
+  "nombre": "Matemáticas",
+  "descripcion": "Cálculo, álgebra y geometría"
+},
+{
+  "_id": {
+    "$oid": "681ad9061384ff943d985c20"
+  },
+  "nombre": "Español",
+  "descripcion": "Lectura, escritura y comprensión de textos"
+},
+{
+  "_id": {
+    "$oid": "681ad9221384ff943d985c22"
+  },
+  "nombre": "Historia",
+  "descripcion": "Estudio de la historia mundial y nacional"
+},
+{
+  "_id": {
+    "$oid": "681ad93b1384ff943d985c24"
+  },
+  "nombre": "Ciencias Naturales",
+  "descripcion": "Biología, química, física"
+},
+{
+  "_id": {
+    "$oid": "681ad9541384ff943d985c26"
+  },
+  "nombre": "Inglés",
+  "descripcion": "Estudio del idioma inglés"
+}]
