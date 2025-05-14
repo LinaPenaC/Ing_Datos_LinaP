@@ -1,0 +1,12 @@
+---- Antes
+git clone (url)
+npm i (pakage.jason)
+
+---- Durante
+npm start
+
+---- Después
+git status
+git add .
+git commit -m "Feature:Ajuste routes"
+git push -u origin main
